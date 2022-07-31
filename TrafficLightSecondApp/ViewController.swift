@@ -9,22 +9,56 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var trafficLightSettingsView: UIStackView!
-    @IBOutlet var trafficLightButtonView: UIButton!
+    @IBOutlet var redView: UIView!
+    @IBOutlet var yellowView: UIView!
+    @IBOutlet var greenView: UIView!
+    @IBOutlet var trafficLightButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        trafficLightSettingsView.layer.cornerRadius = 50
-        trafficLightSettingsView.alpha = 0.2
+        redView.layer.cornerRadius = 104
+        yellowView.layer.cornerRadius = 104
+        greenView.layer.cornerRadius = 104
+        
+        redView.alpha = 0.3
+        yellowView.alpha = 0.3
+        greenView.alpha = 0.3
     }
 
-    @IBAction func trafficLightButtonPressed() {
+    // Мой светофор конечно не работает, но я очень старалась)
+    
+    @IBAction func startButtonPressed() {
+        trafficLightButton.setTitle("NEXT",
+                                    for: .normal)
         
-        for _ in 1...3 {
-         
+        if trafficLightButton.isEnabled {
+            
+            if (redView != nil) == true {
+                var statusOld = redView.alpha = 1
+                (redView != nil) == false
+                (yellowView != nil) == true
+            }
+            
+            
+            if  (greenView != nil) == true {
+                var statusOld = greenView.alpha = 1
+                (greenView != nil) == false
+                (yellowView != nil) == true
+            }
+            
+            if  (yellowView != nil) == true {
+                (yellowView != nil) == false
+                if var statusOld = redView.alpha = 1 {
+                    (greenView != nil) == false
+                } else {
+                    (yellowView != nil) == true
+                }
+            }
         }
+        
         
     }
     
 }
+
 
