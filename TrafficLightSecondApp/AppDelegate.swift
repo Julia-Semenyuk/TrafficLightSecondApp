@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  TrafficLightSecondApp
-//
-//  Created by Юлия on 30.07.2022.
-//
 
 import UIKit
 

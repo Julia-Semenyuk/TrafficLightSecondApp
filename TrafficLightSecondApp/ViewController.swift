@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  TrafficLightSecondApp
-//
-//  Created by Юлия on 30.07.2022.
-//
+
 
 import UIKit
 
@@ -12,20 +7,25 @@ class ViewController: UIViewController {
     @IBOutlet var redView: UIView!
     @IBOutlet var yellowView: UIView!
     @IBOutlet var greenView: UIView!
+    
     @IBOutlet var trafficLightButton: UIButton!
+    
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redView.layer.cornerRadius = 104
-        yellowView.layer.cornerRadius = 104
-        greenView.layer.cornerRadius = 104
         
         redView.alpha = 0.3
         yellowView.alpha = 0.3
         greenView.alpha = 0.3
     }
-
-    // Мой светофор конечно не работает, но я очень старалась)
+    override func viewDidLayoutSubviews() {
+        
+        redView.layer.cornerRadius = redView.frame.width / 2
+        yellowView.layer.cornerRadius = yellowView.frame.width / 2
+        greenView.layer.cornerRadius = greenView.frame.width / 2
+    }
     
     @IBAction func startButtonPressed() {
         trafficLightButton.setTitle("NEXT",
@@ -33,32 +33,20 @@ class ViewController: UIViewController {
         
         if trafficLightButton.isEnabled {
             
-            if (redView != nil) == true {
-                var statusOld = redView.alpha = 1
-                (redView != nil) == false
-                (yellowView != nil) == true
+            if redView.alpha == 1 {
+                redView.alpha = lightIsOff
+                yellowView.alpha = lightIsOn
+            } else if yellowView.alpha == 1 {
+                yellowView.alpha = lightIsOff
+                greenView.alpha = lightIsOn
+            } else if greenView.alpha == 1 {
+                greenView.alpha = lightIsOff
+                redView.alpha = lightIsOn
+            } else {
+                redView.alpha = lightIsOn
             }
             
-            
-            if  (greenView != nil) == true {
-                var statusOld = greenView.alpha = 1
-                (greenView != nil) == false
-                (yellowView != nil) == true
-            }
-            
-            if  (yellowView != nil) == true {
-                (yellowView != nil) == false
-                if var statusOld = redView.alpha = 1 {
-                    (greenView != nil) == false
-                } else {
-                    (yellowView != nil) == true
-                }
-            }
         }
-        
-        
     }
-    
 }
-
 
